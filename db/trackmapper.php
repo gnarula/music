@@ -27,8 +27,8 @@ class TrackMapper extends Mapper {
 	private function makeSelectQueryWithoutUserId($condition){
 		return 'SELECT `track`.`title`, `track`.`number`, `track`.`id`, '.
 			'`track`.`artist_id`, `track`.`album_id`, `track`.`length`, '.
-			'`track`.`file_id`, `track`.`bitrate`, `track`.`mimetype` '.
-			'FROM `*PREFIX*music_tracks` `track` '.
+			'`track`.`file_id`, `track`.`bitrate`, `track`.`mimetype`, '.
+			'`track`.`mbid` FROM `*PREFIX*music_tracks` `track` '.
 			'WHERE ' . $condition;
 	}
 
