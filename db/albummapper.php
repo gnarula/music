@@ -41,7 +41,7 @@ class AlbumMapper extends Mapper {
 	 * @return Album[]
 	 */
 	public function findAll($userId){
-		$sql = $this->makeSelectQuery('ORDER BY `album`.`name`');
+		$sql = $this->makeSelectQuery('ORDER BY LOWER(`album`.`name`)');
 		$params = array($userId);
 		return $this->findEntities($sql, $params);
 	}
@@ -103,9 +103,9 @@ class AlbumMapper extends Mapper {
 			'FROM `*PREFIX*music_albums` `album` '.
 			'WHERE `album`.`id` IN (SELECT DISTINCT `album`.`id` FROM '.
 			'`*PREFIX*music_albums` `album` WHERE `album`.`album_artist_id` = ? AND '.
-			'`album`.`user_id` = ? UNION DISTINCT SELECT `track`.`album_id` '.
+			'`album`.`user_id` = ? UNION SELECT `track`.`album_id` '.
 			'FROM `*PREFIX*music_tracks` `track` WHERE `track`.`artist_id` = ? AND '.
-			'`track`.`user_id` = ?) ORDER BY `album`.`name`';
+			'`track`.`user_id` = ?) ORDER BY LOWER(`album`.`name`)';
 		$params = array($artistId, $userId, $artistId, $userId);
 		return $this->findEntities($sql, $params);
 	}
@@ -307,7 +307,7 @@ class AlbumMapper extends Mapper {
 		$sql = 'SELECT COUNT(*) AS count '.
 			'FROM (SELECT DISTINCT `track`.`album_id` FROM '.
 			'`*PREFIX*music_tracks` `track` WHERE `track`.`artist_id` = ? '.
-			'AND `track`.`user_id` = ? UNION DISTINCT SELECT `album`.`id` FROM '.
+			'AND `track`.`user_id` = ? UNION SELECT `album`.`id` FROM '.
 			'`*PREFIX*music_albums` `album` WHERE `album`.`album_artist_id` = ? '.
 			'AND `album`.`user_id` = ?) tmp';
 		$params = array($artistId, $userId, $artistId, $userId);
@@ -329,7 +329,7 @@ class AlbumMapper extends Mapper {
 		} else {
 			$condition = 'AND `album`.`name` = ? ';
 		}
-		$sql = $this->makeSelectQuery($condition . 'ORDER BY `album`.`name`');
+		$sql = $this->makeSelectQuery($condition . 'ORDER BY LOWER(`album`.`name`)');
 		$params = array($userId, $name);
 		return $this->findEntities($sql, $params);
 	}

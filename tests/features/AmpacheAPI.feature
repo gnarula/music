@@ -35,8 +35,8 @@ Feature: Ampache API
     Then I should get:
       | name                                                | artist                 | tracks | year |
       | Instrumental Film Music Vol 1                       | Unknown Artist         | 2      | 2013 |
-      | NUANCE II                                           | Unknown Artist         | 2      | 2008 |
       | Nuance                                              | Unknown Artist         | 3      | 2006 |
+      | NUANCE II                                           | Unknown Artist         | 2      | 2008 |
       | Orchestral Film Music Vol 1                         | Unknown Artist         | 3      | 2013 |
       | The Butcher s Ballroom                              | Unknown Artist         | 5      | 2009 |
 
@@ -46,8 +46,8 @@ Feature: Ampache API
     And I request the "albums" resource
     Then I should get:
       | name                                                | artist                 | tracks | year |
-      | NUANCE II                                           | Unknown Artist         | 2      | 2008 |
       | Nuance                                              | Unknown Artist         | 3      | 2006 |
+      | NUANCE II                                           | Unknown Artist         | 2      | 2008 |
 
   Scenario: List exact filtered albums
     Given I am logged in with an auth token
@@ -66,8 +66,8 @@ Feature: Ampache API
       | title                          | artist      | album                             | time | track |
       | Aç                             | Pascalb     | Nuance                            | 187  | 7     |
       | Balrog Boogie                  | Diablo Swing Orchestra | The Butcher s Ballroom | 234  |       |
-      | FX Love                        | Pascalb     | NUANCE II                         | 229  | 1     |
       | Forgotten Days                 | SimonBowman | Instrumental Film Music Vol 1     | 195  | 1     |
+      | FX Love                        | Pascalb     | NUANCE II                         | 229  | 1     |
       | Gunpowder Chant                | Diablo Swing Orchestra | The Butcher s Ballroom | 111  |       |
       | Heroines                       | Diablo Swing Orchestra | The Butcher s Ballroom | 322  |       |
       | Médiane                        | Pascalb     | Nuance                            | 203  | 1     |
