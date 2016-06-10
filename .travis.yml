@@ -75,8 +75,8 @@ script:
 
   # Create coverage report
   - bash -c "if [ '$TRAVIS_PHP_VERSION' == '5.4' ]; then wget https://scrutinizer-ci.com/ocular.phar; fi"
-  - bash -c "if [ '$TRAVIS_PHP_VERSION' == '5.4' ]; then php ocular.phar code-coverage:upload --format=php-clover ../clover-unit.xml; fi"
-  - bash -c "if [ '$TRAVIS_PHP_VERSION' == '5.4' ]; then php ocular.phar code-coverage:upload --format=php-clover ../clover-integration.xml; fi"
+  - bash -c "if [ '$TRAVIS_PHP_VERSION' == '5.4' ]; then php ocular.phar code-coverage:upload --format=php-clover clover-unit.xml; fi"
+  - bash -c "if [ '$TRAVIS_PHP_VERSION' == '5.4' ]; then php ocular.phar code-coverage:upload --format=php-clover clover-integration.xml; fi"
 
   # debug section to check what went wrong
   - curl http://admin:admin@localhost:8888/index.php
@@ -86,4 +86,3 @@ script:
 cache:
   directories:
     /tmp/downloadedData
-
