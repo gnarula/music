@@ -35,7 +35,14 @@ $c = $app->getContainer();
 
 // TODO: this is temporarily static because core jobs are not public
 // yet, therefore legacy code
-\OCP\Backgroundjob::addRegularTask('OCA\Music\Backgroundjob\CleanUp', 'run');
+
+// PSR-4
+if(version_compare(implode('.', \OCP\Util::getVersion()), '9.1', '<')){
+	\OCP\Backgroundjob::addRegularTask('OCA\Music\Backgroundjob\CleanUp', 'run');
+}
+else{
+	\OCP\BackgroundJob::addRegularTask('OCA\Music\Backgroundjob\CleanUp', 'run');
+}
 
 /**
  * register hooks
