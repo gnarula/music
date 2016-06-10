@@ -31,7 +31,8 @@ matrix:
 
 branches:
   only:
-    master
+    - master
+    - albumartist_test
 
 before_install:
   - cd ..
